@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+    --background-image-hero: url("/hero_img.jpg");
+    --background-image-hero-mobile: url("/hero_img-sm.jpg");
+}
+
+@layer base {
+    body {
+        @apply  bg-hero-mobile md:bg-hero bg-no-repeat bg-cover
+                bg-[#040711];
+    }
+
+    header {
+        @apply  flex max-w-sm md:max-w-7xl items-center justify-center mt-20 cursor-pointer;
+    }
+
+}
