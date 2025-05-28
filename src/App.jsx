@@ -10,7 +10,7 @@ const App = () => {
   const [toTranslate, setToTranslate] = useState('')
   const [translation, setTranslation] = useState('')
   const [from, setFrom] = useState('en')
-  const [to, setTo] = useState('swe')
+  const [to, setTo] = useState('sv')
   const [debouncedToTranslate, setDebouncedToTranslate] = useState('')
 
   const [showCopied, setShowCopied] = useState(false)
@@ -51,6 +51,14 @@ const App = () => {
     }
   }
 
+  const handleSpeech = (sayThis, lang) => {
+    const synth = window.speechSynthesis
+    const utterThis = new SpeechSynthesisUtterance(sayThis)
+    utterThis.lang = lang
+    utterThis.rate = 0.7
+    synth.speak(utterThis)
+  }
+
   const copyToClipboard = async copyThis => {
     try {
       await navigator.clipboard.writeText(copyThis)
@@ -75,6 +83,7 @@ const App = () => {
           from={from}
           setFrom={setFrom}
           copyToClipboard={copyToClipboard}
+          handleSpeech={handleSpeech}
         />
         <TranslateTo
           translation={translation}
@@ -84,6 +93,7 @@ const App = () => {
           from={from}
           setFrom={setFrom}
           copyToClipboard={copyToClipboard}
+          handleSpeech={handleSpeech}
         />
       </div>
       {showCopied && <span className="copied">Copied!</span>}
