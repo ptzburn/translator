@@ -1,18 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 @import "tailwindcss";
 
 @theme {
     --background-image-hero: url("/hero_img.jpg");
     --background-image-hero-mobile: url("/hero_img-sm.jpg");
+
+    --font-dm-sans: DM Sans, sans-serif;
 }
 
 @layer base {
     body {
-        @apply  bg-hero-mobile md:bg-hero bg-no-repeat bg-cover
-                bg-[#040711];
+        @apply  bg-hero-mobile md:bg-hero bg-no-repeat bg-fixed md:bg-contain bg-top
+                bg-[#040711] font-dm-sans;
     }
 
     header {
         @apply  flex max-w-sm md:max-w-7xl items-center justify-center mt-20 cursor-pointer;
     }
 
+    textarea {
+        @apply h-40 w-full mt-6 text-white rounded-xl text-lg field-sizing-fixed resize-none;
+    }
+
+}
+
+@layer components {
+    .from-card {
+        @apply  flex flex-col items-center justify-center max-w-sm md:max-w-7xl w-sm md:w-md lg:w-lg xl:w-xl
+                py-4 px-8 rounded-xl bg-[#121826CC] border border-[#49515e];
+    }
+
+    .lang-button {
+        @apply flex gap-1 rounded-xl text-xs md:text-sm text-gray-400 font-semibold p-2 hover:bg-gray-400 hover:text-white cursor-pointer;
+    }
+
+    .lang-selector {
+        @apply py-3 w-full flex flex-row gap-4 items-start justify-items-start;
+    }
+
+    .action-button {
+        @apply border-[#49515e] border-2 rounded-xl p-2 hover:bg-gray-400 hover:text-white cursor-pointer;
+    }
+
+    .translate-button {
+        @apply  flex gap-2 bg-[#263FA9] border border-[#7CA9F3] text-white font-semibold
+                items-center px-6 rounded-xl p-2 hover:bg-[#7CA9F3] hover:border-[#263FA9] cursor-pointer;
+    }
+
+    .swap-button {
+        @apply border-[#49515e] border-2 rounded-xl py-0 px-2 h-10 hover:bg-gray-400 hover:text-white cursor-pointer;
+    }
+
+    .copied {
+        @apply text-white bg-black rounded-md p-3 border-[#49515e] border fixed bottom-4 left-4;
+    }
 }
